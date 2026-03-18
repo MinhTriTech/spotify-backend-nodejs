@@ -5,150 +5,150 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)](https://mongoosejs.com/)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-A RESTful API backend for a Spotify-inspired music streaming web application. Built with **Node.js**, **Express**, and **MongoDB**, it supports user authentication (including Google OAuth), playlist management, track uploads, and search functionality.
+Một backend RESTful API cho ứng dụng web nghe nhạc lấy cảm hứng từ Spotify. Được xây dựng bằng **Node.js**, **Express** và **MongoDB**, hỗ trợ xác thực người dùng (bao gồm Google OAuth), quản lý playlist, tải lên bài hát và chức năng tìm kiếm.
 
-> 🖥️ **Frontend Repository:** [MinhTriTech/Spotify-Web-UI-Clone](https://github.com/MinhTriTech/Spotify-Web-UI-Clone)
-
----
-
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [API Documentation](#-api-documentation)
-  - [Authentication](#authentication-apiauth)
-  - [Users](#users-apiuser)
-  - [Me (Current User)](#me-current-user-apime)
-  - [Playlists](#playlists-apiplaylist)
-  - [Tracks](#tracks-apitracks)
-  - [Search](#search-apisearch)
-- [Related Repositories](#-related-repositories)
-- [Contributing](#-contributing)
-- [License](#-license)
+> 🖥️ **Kho lưu trữ Frontend:** [MinhTriTech/Spotify-Web-UI-Clone](https://github.com/MinhTriTech/Spotify-Web-UI-Clone)
 
 ---
 
-## ✨ Features
+## 📋 Mục lục
 
-- 🔐 **Authentication** — Register, login with email/password, and login with Google OAuth
-- 👤 **User Profiles** — View own profile and other users' public profiles
-- 🎵 **Playlist Management** — Create, update, delete playlists and manage tracks within them
-- 🎧 **Track Management** — Upload audio files, associate tracks with playlists
-- 🔍 **Search** — Search across playlists and tracks
-- 🖼️ **File Uploads** — Cover image upload for playlists via Multer
-- 🔒 **JWT Protection** — Protected routes using JSON Web Tokens
-- 🌐 **CORS Enabled** — Ready for cross-origin requests from the frontend
-
----
-
-## 🛠️ Tech Stack
-
-| Layer         | Technology                                |
-|---------------|-------------------------------------------|
-| Runtime       | [Node.js](https://nodejs.org/) (ESM)      |
-| Framework     | [Express.js](https://expressjs.com/) 5.x  |
-| Database      | [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/) |
-| Authentication| [bcrypt](https://github.com/nicktindall/bcrypt.js) · [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) · [google-auth-library](https://github.com/googleapis/google-auth-library-nodejs) |
-| File Uploads  | [Multer](https://github.com/expressjs/multer) |
-| Config        | [dotenv](https://github.com/motdotla/dotenv) |
-| Dev Tool      | [Nodemon](https://nodemon.io/)            |
+- [Tính năng](#-tính-năng)
+- [Công nghệ sử dụng](#️-công-nghệ-sử-dụng)
+- [Cấu trúc dự án](#-cấu-trúc-dự-án)
+- [Yêu cầu cài đặt](#-yêu-cầu-cài-đặt)
+- [Hướng dẫn bắt đầu](#-hướng-dẫn-bắt-đầu)
+- [Biến môi trường](#-biến-môi-trường)
+- [Tài liệu API](#-tài-liệu-api)
+  - [Xác thực](#xác-thực-apiauth)
+  - [Người dùng](#người-dùng-apiuser)
+  - [Tôi (Người dùng hiện tại)](#tôi-người-dùng-hiện-tại-apime)
+  - [Playlist](#playlist-apiplaylist)
+  - [Bài hát](#bài-hát-apitracks)
+  - [Tìm kiếm](#tìm-kiếm-apisearch)
+- [Kho lưu trữ liên quan](#-kho-lưu-trữ-liên-quan)
+- [Đóng góp](#-đóng-góp)
+- [Giấy phép](#-giấy-phép)
 
 ---
 
-## 📁 Project Structure
+## ✨ Tính năng
+
+- 🔐 **Xác thực** — Đăng ký, đăng nhập bằng email/mật khẩu và đăng nhập bằng Google OAuth
+- 👤 **Hồ sơ người dùng** — Xem hồ sơ cá nhân và hồ sơ công khai của người dùng khác
+- 🎵 **Quản lý Playlist** — Tạo, cập nhật, xóa playlist và quản lý bài hát trong đó
+- 🎧 **Quản lý bài hát** — Tải lên file âm thanh, liên kết bài hát với playlist
+- 🔍 **Tìm kiếm** — Tìm kiếm trên playlist và bài hát
+- 🖼️ **Tải lên tệp** — Tải ảnh bìa cho playlist qua Multer
+- 🔒 **Bảo vệ bằng JWT** — Các route được bảo vệ sử dụng JSON Web Token
+- 🌐 **Hỗ trợ CORS** — Sẵn sàng xử lý yêu cầu từ nguồn gốc khác từ frontend
+
+---
+
+## 🛠️ Công nghệ sử dụng
+
+| Tầng           | Công nghệ                                 |
+|----------------|-------------------------------------------|
+| Runtime        | [Node.js](https://nodejs.org/) (ESM)      |
+| Framework      | [Express.js](https://expressjs.com/) 5.x  |
+| Cơ sở dữ liệu  | [MongoDB](https://www.mongodb.com/) với [Mongoose](https://mongoosejs.com/) |
+| Xác thực       | [bcrypt](https://github.com/nicktindall/bcrypt.js) · [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) · [google-auth-library](https://github.com/googleapis/google-auth-library-nodejs) |
+| Tải lên tệp    | [Multer](https://github.com/expressjs/multer) |
+| Cấu hình       | [dotenv](https://github.com/motdotla/dotenv) |
+| Công cụ dev    | [Nodemon](https://nodemon.io/)            |
+
+---
+
+## 📁 Cấu trúc dự án
 
 ```
 spotify-backend-nodejs/
 ├── controllers/
-│   ├── authController.js       # Register, login, Google OAuth
-│   ├── playlistController.js   # CRUD operations for playlists
-│   ├── searchController.js     # Search logic
-│   ├── trackController.js      # Track upload and retrieval
-│   └── userController.js       # User profile retrieval
+│   ├── authController.js       # Đăng ký, đăng nhập, Google OAuth
+│   ├── playlistController.js   # Thao tác CRUD cho playlist
+│   ├── searchController.js     # Logic tìm kiếm
+│   ├── trackController.js      # Tải lên và truy xuất bài hát
+│   └── userController.js       # Truy xuất hồ sơ người dùng
 ├── middleware/
-│   ├── authMiddleware.js       # JWT token verification
-│   └── upload.js               # Multer configuration for file uploads
+│   ├── authMiddleware.js       # Xác minh JWT token
+│   └── upload.js               # Cấu hình Multer cho tải lên tệp
 ├── models/
-│   ├── Playlist.js             # Playlist schema (with virtual trackCount)
-│   ├── Track.js                # Track schema
-│   └── User.js                 # User schema
+│   ├── Playlist.js             # Schema Playlist (với virtual trackCount)
+│   ├── Track.js                # Schema Track
+│   └── User.js                 # Schema User
 ├── routes/
-│   ├── auth.js                 # /api/auth routes
-│   ├── me.js                   # /api/me routes
-│   ├── playlist.js             # /api/playlist routes
-│   ├── search.js               # /api/search routes
-│   ├── track.js                # /api/tracks routes
-│   └── user.js                 # /api/user routes
-├── .env.example                # Example environment variables
+│   ├── auth.js                 # Routes /api/auth
+│   ├── me.js                   # Routes /api/me
+│   ├── playlist.js             # Routes /api/playlist
+│   ├── search.js               # Routes /api/search
+│   ├── track.js                # Routes /api/tracks
+│   └── user.js                 # Routes /api/user
+├── .env.example                # Ví dụ biến môi trường
 ├── .gitignore
 ├── package.json
-├── script.js                   # Utility/seed script
-└── server.js                   # App entry point
+├── script.js                   # Script tiện ích/seed dữ liệu
+└── server.js                   # Điểm khởi chạy ứng dụng
 ```
 
 ---
 
-## ✅ Prerequisites
+## ✅ Yêu cầu cài đặt
 
-Make sure you have the following installed:
+Đảm bảo bạn đã cài đặt các thành phần sau:
 
-- [Node.js](https://nodejs.org/) v18 or higher
-- [npm](https://www.npmjs.com/) v8 or higher
-- A [MongoDB](https://www.mongodb.com/) instance (local or [MongoDB Atlas](https://www.mongodb.com/atlas))
-- A [Google Cloud](https://console.cloud.google.com/) project with an OAuth 2.0 Client ID (for Google login)
+- [Node.js](https://nodejs.org/) phiên bản 18 trở lên
+- [npm](https://www.npmjs.com/) phiên bản 8 trở lên
+- Một instance [MongoDB](https://www.mongodb.com/) (cục bộ hoặc [MongoDB Atlas](https://www.mongodb.com/atlas))
+- Một dự án [Google Cloud](https://console.cloud.google.com/) với OAuth 2.0 Client ID (để đăng nhập bằng Google)
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Hướng dẫn bắt đầu
 
-### 1. Clone the repository
+### 1. Clone kho lưu trữ
 
 ```bash
 git clone https://github.com/MinhTriTech/spotify-backend-nodejs.git
 cd spotify-backend-nodejs
 ```
 
-### 2. Install dependencies
+### 2. Cài đặt các gói phụ thuộc
 
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 3. Cấu hình biến môi trường
 
-Copy the example file and fill in your values:
+Sao chép tệp mẫu và điền các giá trị của bạn:
 
 ```bash
 cp .env.example .env
 ```
 
-See the [Environment Variables](#-environment-variables) section for details.
+Xem phần [Biến môi trường](#-biến-môi-trường) để biết chi tiết.
 
-### 4. Start the development server
+### 4. Khởi động server phát triển
 
 ```bash
 npm run dev
 ```
 
-The server will start on **http://localhost:5000**.
+Server sẽ khởi chạy tại **http://localhost:5000**.
 
 ---
 
-## 🔧 Environment Variables
+## 🔧 Biến môi trường
 
-Create a `.env` file in the root directory with the following variables:
+Tạo tệp `.env` trong thư mục gốc với các biến sau:
 
-| Variable             | Required | Description                                         |
+| Biến                 | Bắt buộc | Mô tả                                               |
 |----------------------|----------|-----------------------------------------------------|
-| `MONGO_URI`          | ✅       | MongoDB connection string                           |
-| `JWT_SECRET`         | ✅       | Secret key used to sign and verify JWT tokens       |
-| `GOOGLE_CLIENT_ID`   | ✅       | Google OAuth 2.0 Client ID for Google login         |
+| `MONGO_URI`          | ✅       | Chuỗi kết nối MongoDB                              |
+| `JWT_SECRET`         | ✅       | Khóa bí mật dùng để ký và xác minh JWT token       |
+| `GOOGLE_CLIENT_ID`   | ✅       | Google OAuth 2.0 Client ID để đăng nhập bằng Google |
 
-**Example `.env` file:**
+**Ví dụ tệp `.env`:**
 
 ```env
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/spotify-clone
@@ -156,25 +156,25 @@ JWT_SECRET=your_super_secret_jwt_key
 GOOGLE_CLIENT_ID=your_google_oauth_client_id.apps.googleusercontent.com
 ```
 
-> ⚠️ Never commit your `.env` file to version control. It is already listed in `.gitignore`.
+> ⚠️ Không bao giờ commit tệp `.env` lên hệ thống quản lý phiên bản. Tệp này đã được liệt kê trong `.gitignore`.
 
 ---
 
-## 📡 API Documentation
+## 📡 Tài liệu API
 
-Base URL: `http://localhost:5000`
+URL gốc: `http://localhost:5000`
 
-All protected routes require a `Authorization: Bearer <token>` header.
+Tất cả các route được bảo vệ đều yêu cầu header `Authorization: Bearer <token>`.
 
 ---
 
-### Authentication (`/api/auth`)
+### Xác thực (`/api/auth`)
 
-| Method | Endpoint             | Auth | Description                        |
-|--------|----------------------|------|------------------------------------|
-| POST   | `/api/auth/register` | ❌   | Register a new user                |
-| POST   | `/api/auth/login`    | ❌   | Login with email and password      |
-| POST   | `/api/auth/google`   | ❌   | Login or register with Google      |
+| Phương thức | Endpoint             | Auth | Mô tả                              |
+|-------------|----------------------|------|------------------------------------|
+| POST        | `/api/auth/register` | ❌   | Đăng ký người dùng mới             |
+| POST        | `/api/auth/login`    | ❌   | Đăng nhập bằng email và mật khẩu  |
+| POST        | `/api/auth/google`   | ❌   | Đăng nhập hoặc đăng ký bằng Google |
 
 <details>
 <summary>POST <code>/api/auth/register</code></summary>
@@ -238,38 +238,38 @@ All protected routes require a `Authorization: Bearer <token>` header.
 
 ---
 
-### Users (`/api/user`)
+### Người dùng (`/api/user`)
 
-| Method | Endpoint                  | Auth | Description                        |
-|--------|---------------------------|------|------------------------------------|
-| GET    | `/api/user/randomUsers`   | ❌   | Get a list of random users         |
-| GET    | `/api/user/:id`           | ✅   | Get a user's public profile by ID  |
-
----
-
-### Me (Current User) (`/api/me`)
-
-| Method | Endpoint    | Auth | Description                            |
-|--------|-------------|------|----------------------------------------|
-| GET    | `/api/me`   | ✅   | Get the currently authenticated user's profile |
+| Phương thức | Endpoint                  | Auth | Mô tả                                    |
+|-------------|---------------------------|------|------------------------------------------|
+| GET         | `/api/user/randomUsers`   | ❌   | Lấy danh sách người dùng ngẫu nhiên      |
+| GET         | `/api/user/:id`           | ✅   | Lấy hồ sơ công khai của người dùng theo ID |
 
 ---
 
-### Playlists (`/api/playlist`)
+### Tôi (Người dùng hiện tại) (`/api/me`)
 
-| Method | Endpoint                                  | Auth | Description                         |
-|--------|-------------------------------------------|------|-------------------------------------|
-| GET    | `/api/playlist`                           | ✅   | Get all playlists of the current user |
-| POST   | `/api/playlist`                           | ✅   | Create a new playlist               |
-| GET    | `/api/playlist/randomPlaylists`           | ❌   | Get a list of random playlists      |
-| GET    | `/api/playlist/:id`                       | ✅   | Get a playlist by ID (with tracks)  |
-| POST   | `/api/playlist/:playlistId/tracks`        | ✅   | Add a track to a playlist           |
-| DELETE | `/api/playlist/:playlistId/tracks/:trackId` | ✅ | Remove a track from a playlist      |
-| PATCH  | `/api/playlist/:id`                       | ✅   | Update playlist info (name, cover)  |
-| DELETE | `/api/playlist/:playlistId`               | ✅   | Delete a playlist                   |
+| Phương thức | Endpoint    | Auth | Mô tả                                         |
+|-------------|-------------|------|-----------------------------------------------|
+| GET         | `/api/me`   | ✅   | Lấy hồ sơ của người dùng đang đăng nhập       |
+
+---
+
+### Playlist (`/api/playlist`)
+
+| Phương thức | Endpoint                                    | Auth | Mô tả                                       |
+|-------------|---------------------------------------------|------|---------------------------------------------|
+| GET         | `/api/playlist`                             | ✅   | Lấy tất cả playlist của người dùng hiện tại |
+| POST        | `/api/playlist`                             | ✅   | Tạo playlist mới                            |
+| GET         | `/api/playlist/randomPlaylists`             | ❌   | Lấy danh sách playlist ngẫu nhiên           |
+| GET         | `/api/playlist/:id`                         | ✅   | Lấy playlist theo ID (kèm bài hát)          |
+| POST        | `/api/playlist/:playlistId/tracks`          | ✅   | Thêm bài hát vào playlist                   |
+| DELETE      | `/api/playlist/:playlistId/tracks/:trackId` | ✅   | Xóa bài hát khỏi playlist                  |
+| PATCH       | `/api/playlist/:id`                         | ✅   | Cập nhật thông tin playlist (tên, ảnh bìa)  |
+| DELETE      | `/api/playlist/:playlistId`                 | ✅   | Xóa playlist                                |
 
 <details>
-<summary>POST <code>/api/playlist</code> — Create a Playlist</summary>
+<summary>POST <code>/api/playlist</code> — Tạo Playlist</summary>
 
 **Request Body:**
 ```json
@@ -293,29 +293,29 @@ All protected routes require a `Authorization: Bearer <token>` header.
 </details>
 
 <details>
-<summary>PATCH <code>/api/playlist/:id</code> — Update a Playlist</summary>
+<summary>PATCH <code>/api/playlist/:id</code> — Cập nhật Playlist</summary>
 
-Accepts `multipart/form-data` to support cover image upload.
+Chấp nhận `multipart/form-data` để hỗ trợ tải lên ảnh bìa.
 
-**Form Fields:**
-- `title` (string, optional) — New playlist title
-- `description` (string, optional) — New playlist description
-- `coverImage` (file, optional) — New cover image
+**Các trường Form:**
+- `title` (string, tùy chọn) — Tên playlist mới
+- `description` (string, tùy chọn) — Mô tả playlist mới
+- `coverImage` (file, tùy chọn) — Ảnh bìa mới
 </details>
 
 ---
 
-### Tracks (`/api/tracks`)
+### Bài hát (`/api/tracks`)
 
-| Method | Endpoint                        | Auth | Description                                       |
-|--------|---------------------------------|------|---------------------------------------------------|
-| GET    | `/api/tracks/randomTracks`      | ❌   | Get a list of random tracks                       |
-| POST   | `/api/tracks/_hidden/upload`    | ❌   | Upload an audio file (internal/admin use)         |
-| GET    | `/api/tracks/:playlistId`       | ✅   | Get all tracks in a specific playlist             |
-| POST   | `/api/tracks/:playlistId`       | ✅   | Create a new track and add it to a playlist       |
+| Phương thức | Endpoint                        | Auth | Mô tả                                                  |
+|-------------|---------------------------------|------|--------------------------------------------------------|
+| GET         | `/api/tracks/randomTracks`      | ❌   | Lấy danh sách bài hát ngẫu nhiên                       |
+| POST        | `/api/tracks/_hidden/upload`    | ❌   | Tải lên file âm thanh (chỉ dùng nội bộ/quản trị viên) |
+| GET         | `/api/tracks/:playlistId`       | ✅   | Lấy tất cả bài hát trong một playlist cụ thể           |
+| POST        | `/api/tracks/:playlistId`       | ✅   | Tạo bài hát mới và thêm vào playlist                   |
 
 <details>
-<summary>POST <code>/api/tracks/:playlistId</code> — Create a Track</summary>
+<summary>POST <code>/api/tracks/:playlistId</code> — Tạo bài hát</summary>
 
 **Request Body:**
 ```json
@@ -331,54 +331,54 @@ Accepts `multipart/form-data` to support cover image upload.
 
 ---
 
-### Search (`/api/search`)
+### Tìm kiếm (`/api/search`)
 
-| Method | Endpoint       | Auth | Description                                   |
-|--------|----------------|------|-----------------------------------------------|
-| GET    | `/api/search`  | ✅   | Search playlists and tracks by keyword        |
+| Phương thức | Endpoint       | Auth | Mô tả                                          |
+|-------------|----------------|------|------------------------------------------------|
+| GET         | `/api/search`  | ✅   | Tìm kiếm playlist và bài hát theo từ khóa     |
 
 **Query Parameters:**
 
-| Parameter | Type   | Description                     |
-|-----------|--------|---------------------------------|
-| `q`       | string | The search keyword to query for |
+| Tham số | Kiểu   | Mô tả                          |
+|---------|--------|--------------------------------|
+| `q`     | string | Từ khóa tìm kiếm               |
 
-**Example:** `GET /api/search?q=rock`
-
----
-
-## 🔗 Related Repositories
-
-| Repository | Description |
-|------------|-------------|
-| ⚙️ **[spotify-backend-nodejs](https://github.com/MinhTriTech/spotify-backend-nodejs)** (this repo) | Node.js + Express REST API backend |
-| 🖥️ **[Spotify-Web-UI-Clone](https://github.com/MinhTriTech/Spotify-Web-UI-Clone)** | React frontend — the web user interface |
+**Ví dụ:** `GET /api/search?q=rock`
 
 ---
 
-## 🤝 Contributing
+## 🔗 Kho lưu trữ liên quan
 
-Contributions are welcome! Please follow these steps:
-
-1. **Fork** the repository
-2. **Create** a new feature branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. **Commit** your changes with a clear message:
-   ```bash
-   git commit -m "feat: add your feature description"
-   ```
-4. **Push** to your fork:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-5. **Open a Pull Request** on GitHub and describe your changes
-
-Please make sure your code follows the existing style and that you have tested your changes.
+| Kho lưu trữ | Mô tả |
+|-------------|-------|
+| ⚙️ **[spotify-backend-nodejs](https://github.com/MinhTriTech/spotify-backend-nodejs)** (repo này) | Backend REST API với Node.js + Express |
+| 🖥️ **[Spotify-Web-UI-Clone](https://github.com/MinhTriTech/Spotify-Web-UI-Clone)** | Frontend React — giao diện web người dùng |
 
 ---
 
-## 📄 License
+## 🤝 Đóng góp
 
-This project is licensed under the **ISC License**. See the [LICENSE](./LICENSE) file for details.
+Chúng tôi luôn chào đón mọi đóng góp! Vui lòng thực hiện theo các bước sau:
+
+1. **Fork** kho lưu trữ
+2. **Tạo** một nhánh tính năng mới:
+   ```bash
+   git checkout -b feature/ten-tinh-nang-cua-ban
+   ```
+3. **Commit** các thay đổi với thông điệp rõ ràng:
+   ```bash
+   git commit -m "feat: mô tả tính năng của bạn"
+   ```
+4. **Push** lên fork của bạn:
+   ```bash
+   git push origin feature/ten-tinh-nang-cua-ban
+   ```
+5. **Mở Pull Request** trên GitHub và mô tả các thay đổi của bạn
+
+Vui lòng đảm bảo code của bạn tuân theo phong cách hiện tại và bạn đã kiểm tra các thay đổi.
+
+---
+
+## 📄 Giấy phép
+
+Dự án này được cấp phép theo **Giấy phép ISC**. Xem tệp [LICENSE](./LICENSE) để biết chi tiết.
